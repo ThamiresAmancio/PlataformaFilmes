@@ -1,39 +1,41 @@
 import styled from "styled-components";
 
 
-
-
 export const Categorias = styled.div`
 
-    width: 95%;
-    height: 250px;
-    display: flex;
+    min-width: 95%;
+    width: auto;
+    min-height: 250px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows:auto;
+    grid-gap: 50px ;
     align-items: center;
     justify-content: center;
-    margin-left: 40px;
     margin-top: 120px;
 
     >div{
      width: 200px;
-     height:290px;
+     height:auto;
      background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
      display: flex;
      align-items: center;
      justify-content: flex-start;
      margin-left: 45px ;
      box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
-     border: 2px solid rgba(249, 249, 249, 0.1);
+     border: 4px solid rgba(249, 249, 249, 0.1);
      border-radius: 3px;
+    
      
-
     :hover {
      -webkit-transform:scale(1.2); 
      -moz-transform:scale(1.2); 
+     cursor: pointer;
      -o-transform:scale(1.2);
      transform:scale(1.2);
-     border: 2px solid white;
-     margin-left: 60px;
-     margin-right: 60px;
+     transition: all  200ms  ease-in ;
+     border: 4px solid white;
     }
 
     >img{
@@ -49,6 +51,6 @@ export const Titulo = styled.h2`
     font-size: 1.9em;
     position: relative;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 10px;
 `
 

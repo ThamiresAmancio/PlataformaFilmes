@@ -1,0 +1,34 @@
+ 
+ 
+   const [contagemImagem, setContagemImagem] = useState(0) 
+
+ 
+ function showPrivateShow(){
+    if(contagemImagem => 0 ){
+      const novaImg = contagemImagem -1;
+      setContagemImagem({contagemImagem : novaImg})
+    }else{
+      setContagemImagem({contagemImagem : images.length -1})
+    }
+  }
+
+  function showNextShow(){
+    if(contagemImagem => images.length -1){
+      const novaImg =  contagemImagem +1
+      setContagemImagem({contagemImagem : novaImg})
+    }else{
+      setContagemImagem({contagemImagem :0})
+    }
+  }
+
+
+
+        {
+          images.map((value, i)=> i === contagemImagem ? (
+            <div key={i}/>
+          ):(
+            <div key={1} oncC>
+
+            </div>
+          ))
+        }

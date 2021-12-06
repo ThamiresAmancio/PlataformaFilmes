@@ -1,17 +1,17 @@
-import { BrowserRouter } from "react-router-dom";
-import Filmes from "./Pages/Filmes";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Filmes from './Pages/Filmes';
+import Home from './Pages/Home';
 
-function Routers() {
+function Rotas() {
+
     return (
         <BrowserRouter>
-        <Switch>
-            <Route exact path="/filmes">
-                <Filmes/>
-            </Route>
-        </Switch>
-    </BrowserRouter>
-    )
-
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/filmes" component={Filmes}/>
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
-export default Routers;
+export default Rotas;

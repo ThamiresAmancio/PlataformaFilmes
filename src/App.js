@@ -1,12 +1,11 @@
 import './App.css';
-import Filmes from './Pages/Filmes';
-import Home from './Pages/Home';
+import Rotas from './Router';
 
 
 function App() {
   return (
     <div>
-      <Filmes/>
+      <Rotas/>
     </div>
   );
 }

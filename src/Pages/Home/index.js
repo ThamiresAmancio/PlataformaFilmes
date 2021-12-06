@@ -1,12 +1,14 @@
 import React from 'react';
 import Menu from '../Menu';
-import { Categorias, CategoriasTwo, SlideImage } from './style';
+import { Categorias, SlideImage } from './style';
 import img1 from '../../Assets/simplesmenteacontece.jpeg';
 import img2 from '../../Assets/antes.jpg';
 
 import SimpleImageSlider from "react-simple-image-slider";
-
+import { Link } from 'react-router-dom';
 import '../../App.css';
+import './style.css';
+import Footer from '../../Components/Footer';
 
 function Home() {
 
@@ -16,58 +18,67 @@ function Home() {
     { url: img2 }
   ];
 
+  const generos = [
+    {
+      genero:'Terror'
+    },
+    {
+      genero:'Romance'
+    },
+    {
+      genero:'Comédia'
+    },
+    {
+      genero:'Ação'
+    }, {
+      genero:'Suspense'
+    },
+    {
+      genero:'Ficção'
+    },
+    {
+      genero:'Drama'
+    },
+    {
+      genero:'Documentário'
+    },
+    {
+      genero:'Animação'
+    },
+    {
+      genero:'Anime'
+    },
+
+  ]
+
 
   return (
     <>
       <Menu />
       <SlideImage>
         <SimpleImageSlider
-          width={1600}
-          height={580}
+          width={1800}
+          height={590}
           images={images}
           showBullets={true}
           showNavs={true}
           slideDuration={0.1}
-          navMargin={25}
-          navSize={50}
+          navMargin={5}
+          navSize={40}
         />
       </SlideImage>
       <Categorias>
-        <div>
-          <p>Terror</p>
-        </div>
-        <div>
-          <p>Comédia</p>
-        </div>
-        <div>
-          <p>Ação</p>
-        </div>
-        <div>
-          <p>Suspense</p>
-        </div>
-        <div>
-          <p>Ficção </p>
-        </div>
+        {
+          generos.map((item) => {
+            return <div>
+              <Link className="link" to="/filmes">
+                {item.genero}
+            </Link>
+            </div>
+          })
+        }
       </Categorias>
-      <CategoriasTwo>
-        <div>
-          <p>Drama</p>
-          
-        </div>
-        <div>
-          <p>Documentário</p>
-        </div>
-        <div>
-          <p>Animação</p>
-        </div>
-        <div>
-          <p>Séries</p>
-        </div>
-        <div>
-          <p>Anime</p>
-        </div>
-      </CategoriasTwo>
-
+      <Footer/>
     </>
   )
 }

@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
 import {MenuTitle } from "./style";
-
+import '../Home/style.css';
 function Menu() {
     return (
         <>
             <MenuTitle>
                   <h1>Tflix</h1>
                 <div>
-                    <p>Início</p>
+                    <Link className="link" to='/'>
+                      Início                    
+                     </Link>
                 </div>
                 <div>
                     <p>Séries</p>

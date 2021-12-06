@@ -1,72 +1,106 @@
 import Menu from "../Menu";
-import { Categorias } from "./style";
+import { Categorias, Titulo } from "./style";
 import img1 from '../../Assets/051042.jpg';
 import img2 from '../../Assets/euantesdevocê.jpg';
-import ReactPlayer from "react-player";
+import img3 from '../../Assets/culpa.jpg';
+import Footer from "../../Components/Footer";
 
 
 function Filmes() {
 
-
+    const filmes = [
+        {
+            nome:'Simplesmente acontece',
+            url: img1
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img2
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        {
+            nome:'Simplesmente acontece',
+            url: img1
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img2
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        {
+            nome:'Simplesmente acontece',
+            url: img1
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img2
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        {
+            nome:'Simplesmente acontece',
+            url: img1
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img2
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        {
+            nome:'Simplesmente acontece',
+            url: img1
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img2
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        {
+            nome:'Simplesmente acontece',
+            url: img1
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img2
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        
+    ]
     return (
         <>
             <div>
                 <Menu />
             </div>
-
-            <div>
-               < ReactPlayer url='https://www.youtube.com/watch?v=PnqUs3xiAVI' width={1500} height={500} />
-            </div>
-            
+            <Titulo>Romance</Titulo>
             <Categorias>
-                <div>
-                    <img src={img1} alt='Simplesmente Acontece' title='Simplesmente Acontece' />
-                </div>
-                <div>
-                    <img src={img2} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-
-
+                {
+                    filmes.map((item)=>
+                    {
+                        return  <div>
+                        <img src={item.url}  alt={item.nome} title={item.nome}/>
+                    </div>
+                    }
+                   )
+                }
             </Categorias>
-            <Categorias>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-                <div>
-                    <img src={img1} />
-                </div>
-
-            </Categorias>
+            <Footer/>
         </>
     )
 }

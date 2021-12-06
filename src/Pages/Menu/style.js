@@ -14,15 +14,15 @@ export const MenuTitle = styled.nav`
 
     >h1{
         font-family: 'Fuzzy Bubbles', cursive;
-        font-size: 1.9em;
-        color: blue;
+        font-size: 40px;
+        color: white;
         padding: 4%;
     }
 
 
     p{
         font-family: 'Fuzzy Bubbles', cursive;
-        font-size: 1.3em;
+        font-size: 1.8em;
         color: white;
         margin-left: 25px;
     }
