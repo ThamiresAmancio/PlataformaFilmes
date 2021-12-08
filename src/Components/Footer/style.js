@@ -7,13 +7,14 @@ export const Footers = styled.footer`
     height: 100px;
     background: black;
     margin-top: 125px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     >p{
-        font-size: 1.9em;
+        font-size: 1.3em;
         font-family: 'Fuzzy Bubbles', cursive;
         color: white;
-        text-align: center;
-        
         
     }
 

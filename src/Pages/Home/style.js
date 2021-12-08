@@ -1,17 +1,14 @@
 import styled from "styled-components";
 
-
 export const SlideImage = styled.div`
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: cover;
-  margin-top: 35px;
-
+  position: relative;
   :hover{
       cursor: pointer;
-  }
-  
+  }  
   
 `
 export const Categorias = styled.div`
@@ -27,11 +24,12 @@ export const Categorias = styled.div`
     justify-content: center;
     margin-left: 50px;
     margin-top: 65px ;
+
     
 
     >div{
-     width: 225px;
-     height:130px;
+     width: 215px;
+     height:120px;
      background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
      display: flex;
      align-items: center;
@@ -48,8 +46,18 @@ export const Categorias = styled.div`
      transform:scale(1.1);
      border: 2px solid white;
      cursor: pointer;
+     color: teal;
     }
-  
+
+    >.link{
+    font-size: 1.8em;
+    font-family: 'Fuzzy Bubbles', cursive;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+
+  }
 }
 `
 

@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { BiSearch } from 'react-icons/bi';
-
 
 export const MenuTitle = styled.nav`
 
@@ -16,7 +14,7 @@ export const MenuTitle = styled.nav`
         font-family: 'Fuzzy Bubbles', cursive;
         font-size: 40px;
         color: white;
-        padding: 4%;
+        padding: 2%;
     }
 
 
@@ -28,24 +26,12 @@ export const MenuTitle = styled.nav`
     }
 
     >input{
-        width: 50%;
+        width: 60%;
         height: 45%;
         border: none;
         font-family: sans-serif;
         font-size: 1.1em;
         margin-left: 120px;
     }
-
 `
 
-export const IconSearch = styled(BiSearch)`
-    height: 24px;
-    min-width: 24px;
-    width: 24px;
-    z-index: auto;
-    color: white;
-    left: 15%;
-    position:absolute;
-    cursor: pointer;
-    
-    `

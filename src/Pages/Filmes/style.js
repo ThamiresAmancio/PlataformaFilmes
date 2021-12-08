@@ -10,10 +10,10 @@ export const Categorias = styled.div`
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows:auto;
-    grid-gap: 50px ;
+    grid-gap: 40px ;
     align-items: center;
     justify-content: center;
-    margin-top: 120px;
+    margin-top: 100px;
 
     >div{
      width: 200px;
@@ -36,6 +36,7 @@ export const Categorias = styled.div`
      transform:scale(1.2);
      transition: all  200ms  ease-in ;
      border: 4px solid white;
+    
     }
 
     >img{
@@ -48,9 +49,20 @@ export const Categorias = styled.div`
 export const Titulo = styled.h2`
     color: #fff;
     font-family: 'Fuzzy Bubbles', cursive;
-    font-size: 1.9em;
-    position: relative;
+    font-size: 40px;
+    margin-top: 35px;
+    margin-left: 48px;
     text-align: center;
-    margin-top: 10px;
 `
+
+export const Videos = styled.div`
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    margin-top: 35px;
+`
+
+
 
