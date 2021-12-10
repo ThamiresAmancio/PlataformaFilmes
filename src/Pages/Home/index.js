@@ -1,30 +1,54 @@
 import React from 'react';
 import Menu from '../Menu';
-import { Categorias, SlideImage } from './style';
+import { Categorias, FilmesRandom, SlideImage, Titulo } from './style';
 import img1 from '../../Assets/jogoperigoso.PNG';
 import img2 from '../../Assets/unnamed.jpg';
+import img3 from '../../Assets/euantesdevocê.jpg';
 import SimpleImageSlider from "react-simple-image-slider";
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import Footer from '../../Components/Footer';
+import img4 from '../../Assets/051042.jpg';
+import img5 from '../../Assets/euantesdevocê.jpg';
+import img6 from '../../Assets/culpa.jpg';
+import img7 from '../../Assets/shang.jfif';
+import img8 from '../../Assets/$value.jfif';
 function Home() {
 
   const images = [
     { url: img1 },
-    {url:img2}
+     {url:img2},
+     {url:img3}
   ];
 
-  // function randList() {
-  //   return images[Math.floor(Math.random() * images.length)];
-  //const newPokemon = Math.floor(Math.random() * segundaMao.length);
-  // }
+  const filmes = [
+    {
+        nome:'Simplesmente acontece',
+        url: img5
+    },
+    {
+        nome:'Como Eu Era Antes de Você',
+        url: img6
+    },
+    {
+        nome:'A culpa é das estrelas',
+        url: img7
+    },
+    {
+        nome:'A lenda dos dez anéis',
+        url: img8
+    },
+    {
+      nome:'A culpa é das estrelas',
+      url: img7
+  },
+  {
+      nome:'A lenda dos dez anéis',
+      url: img8
+  },
+]
 
-  const randList = images[Math.floor(Math.random() * images.length)];
-
-  console.log(randList)
   
-  
-
   const generos = [
     {
       genero: 'Terror'
@@ -84,6 +108,21 @@ function Home() {
           })
         }
       </Categorias>
+
+      <div>
+      <Titulo>Destaques</Titulo>
+            <FilmesRandom>
+                {
+                    filmes.map((item)=>
+                    {
+                        return  <div>
+                        <img src={item.url}  alt={item.nome} title={item.nome}/>
+                    </div>
+                    }
+                   )
+                }
+            </FilmesRandom>
+      </div>
       <Footer />
     </>
   )

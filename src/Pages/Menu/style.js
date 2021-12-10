@@ -5,7 +5,7 @@ export const MenuTitle = styled.nav`
     position: relative;
     width: 100%;
     height: 90px;
-    background-color: transparent;
+    background-color: #090b13;
     display: flex;
     align-items: center;
     justify-content: flex-start;

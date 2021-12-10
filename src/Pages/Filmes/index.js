@@ -6,7 +6,7 @@ import img3 from '../../Assets/culpa.jpg';
 import img4 from '../../Assets/shang.jfif';
 import img5 from '../../Assets/$value.jfif';
 import Footer from "../../Components/Footer";
-// import ReactPlayer from "react-player";
+
 
 
 function Filmes() {

@@ -6,6 +6,7 @@ export const SlideImage = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-top: 15px;
   :hover{
       cursor: pointer;
   }  
@@ -59,5 +60,58 @@ export const Categorias = styled.div`
 
   }
 }
+
 `
 
+export const Titulo = styled.h2`
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1.9em;
+    margin-top: 130px;
+    margin-left: 65px;
+`
+
+export const FilmesRandom = styled.div`
+
+    min-width: 95%;
+    width: auto;
+    min-height: 250px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows:auto;
+    grid-gap: 40px ;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+
+    >div{
+     width: 200px;
+     height:auto;
+     background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     margin-left: 50px ;
+     box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
+     border: 4px solid rgba(249, 249, 249, 0.1);
+     border-radius: 3px;
+    
+     
+    :hover {
+     -webkit-transform:scale(1.2); 
+     -moz-transform:scale(1.2); 
+     cursor: pointer;
+     -o-transform:scale(1.2);
+     transform:scale(1.2);
+     transition: all  200ms  ease-in ;
+     border: 4px solid white;
+    
+    }
+
+    >img{
+        width: 200px;
+    }
+}
+
+`
