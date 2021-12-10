@@ -43,6 +43,38 @@ function Filmes() {
         {
             nome:'Como Eu Era Antes de Você',
             url: img5
+        },
+        {
+            nome:'Simplesmente acontece',
+            url: img1
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img2
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        {
+            nome:'A lenda dos dez anéis',
+            url: img4
+        },
+        {
+            nome:'Os croods 2',
+            url: img5
+        },
+        {
+            nome:'A culpa é das estrelas',
+            url: img3
+        },
+        {
+            nome:'A lenda dos dez anéis',
+            url: img4
+        },
+        {
+            nome:'Como Eu Era Antes de Você',
+            url: img5
         }
 
     ]
@@ -52,9 +84,6 @@ function Filmes() {
                 <Menu />
             </div>
             <Titulo>Filmes</Titulo>
-            {/* <Videos>
-                <ReactPlayer loop={true} url='https://youtu.be/ZUqU9SQOt10' width={1750} height={650}/>
-            </Videos> */}
             <Categorias>
                 {
                     filmes.map((item)=>

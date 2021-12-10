@@ -18,7 +18,7 @@ export const Categorias = styled.div`
     min-height: 250px;
     height: auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-auto-rows:auto;
     grid-gap: 50px ;
     align-items: center;
@@ -29,15 +29,17 @@ export const Categorias = styled.div`
     
 
     >div{
-     width: 215px;
-     height:120px;
+     min-width: 215px;
+     width: auto;
+     min-height:120px;
+     height: auto;
      background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
      display: flex;
      align-items: center;
      justify-content: flex-start;
      margin-left: 25px ;
      border-radius: 10px;
-     box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
+     box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.5);
      border: 2px solid rgba(249, 249, 249, 0.1);
 
     :hover {
@@ -68,7 +70,8 @@ export const Titulo = styled.h2`
     font-family: sans-serif;
     font-size: 1.9em;
     margin-top: 130px;
-    margin-left: 65px;
+    margin-left: 50px;
+
 `
 
 export const FilmesRandom = styled.div`
@@ -83,7 +86,7 @@ export const FilmesRandom = styled.div`
     grid-gap: 40px ;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 15px;
 
     >div{
      width: 200px;
@@ -92,7 +95,7 @@ export const FilmesRandom = styled.div`
      display: flex;
      align-items: center;
      justify-content: flex-start;
-     margin-left: 50px ;
+     margin-left: 40px ;
      box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
      border: 4px solid rgba(249, 249, 249, 0.1);
      border-radius: 3px;

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const MenuTitle = styled.nav`
 
-    position: relative;
     width: 100%;
     height: 90px;
     background-color: #090b13;

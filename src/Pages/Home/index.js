@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Menu from '../Menu';
 import { Categorias, FilmesRandom, SlideImage, Titulo } from './style';
 import img1 from '../../Assets/jogoperigoso.PNG';
@@ -8,12 +8,31 @@ import SimpleImageSlider from "react-simple-image-slider";
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import Footer from '../../Components/Footer';
-import img4 from '../../Assets/051042.jpg';
 import img5 from '../../Assets/euantesdevocê.jpg';
 import img6 from '../../Assets/culpa.jpg';
 import img7 from '../../Assets/shang.jfif';
 import img8 from '../../Assets/$value.jfif';
+import { api } from '../service/api';
+
 function Home() {
+
+  const api_key = '23ef43567db026524d99518cb6f8a479';
+  
+  const language = 'pt-BR'
+
+  const [generos,setGeneros] = useState([]);
+
+
+  useEffect(() =>{
+
+    try {
+      api.get(`/genre/movie/list?api_key=${api_key}&language=${language}`).then(({data})=>{
+        setGeneros(data);
+      })
+    } catch (error) {
+      console.log('Error');
+    }
+},[])
 
   const images = [
     { url: img1 },
@@ -47,40 +66,7 @@ function Home() {
       url: img8
   },
 ]
-
-  
-  const generos = [
-    {
-      genero: 'Terror'
-    },
-    {
-      genero: 'Romance'
-    },
-    {
-      genero: 'Comédia'
-    },
-    {
-      genero: 'Ação'
-    }, {
-      genero: 'Suspense'
-    },
-    {
-      genero: 'Ficção'
-    },
-    {
-      genero: 'Drama'
-    },
-    {
-      genero: 'Documentário'
-    },
-    {
-      genero: 'Animação'
-    },
-    {
-      genero: 'Anime'
-    },
-
-  ]
+ 
 
   return (
     <>
@@ -99,23 +85,23 @@ function Home() {
       </SlideImage>
       <Categorias>
         {
-          generos.map((item) => {
-            return <div>
+          generos.genres.map((item) => {
+           
+            return <div key={item.id}>
               <Link className="link" to="/filmes">
-                {item.genero}
+                {item.name}
               </Link>
             </div>
           })
         }
       </Categorias>
-
       <div>
       <Titulo>Destaques</Titulo>
             <FilmesRandom>
                 {
                     filmes.map((item)=>
                     {
-                        return  <div>
+                        return  <div key={item.id}>
                         <img src={item.url}  alt={item.nome} title={item.nome}/>
                     </div>
                     }
