@@ -8,10 +8,6 @@ import SimpleImageSlider from "react-simple-image-slider";
 import { Link } from 'react-router-dom';
 import '../../App.css';
 import Footer from '../../Components/Footer';
-import img5 from '../../Assets/euantesdevocê.jpg';
-import img6 from '../../Assets/culpa.jpg';
-import img7 from '../../Assets/shang.jfif';
-import img8 from '../../Assets/$value.jfif';
 import { api } from '../service/api';
 
 function Home() {
@@ -22,9 +18,14 @@ function Home() {
 
   const [generos,setGeneros] = useState([]);
 
+  const [recomendados, setRecomendados] = useState([])
 
+  const move_id =  Math.floor((Math.random() * 510))
+  const page_id = Math.floor((Math.random() * 2) +1)
+
+ 
   useEffect(() =>{
-
+    
     try {
       api.get(`/genre/movie/list?api_key=${api_key}&language=${language}`).then(({data})=>{
         setGeneros(data);
@@ -34,39 +35,23 @@ function Home() {
     }
 },[])
 
+useEffect(() =>{
+    
+  try {
+    api.get(`movie/{move_id}/recommendations?api_key=${api_key}&language=${language}&page=1`).then(({data})=>{
+      setRecomendados(data);
+    })
+  } catch (error) {
+    console.log('Error');
+  }
+},[])
+
   const images = [
     { url: img1 },
      {url:img2},
      {url:img3}
   ];
 
-  const filmes = [
-    {
-        nome:'Simplesmente acontece',
-        url: img5
-    },
-    {
-        nome:'Como Eu Era Antes de Você',
-        url: img6
-    },
-    {
-        nome:'A culpa é das estrelas',
-        url: img7
-    },
-    {
-        nome:'A lenda dos dez anéis',
-        url: img8
-    },
-    {
-      nome:'A culpa é das estrelas',
-      url: img7
-  },
-  {
-      nome:'A lenda dos dez anéis',
-      url: img8
-  },
-]
- 
 
   return (
     <>
@@ -83,30 +68,38 @@ function Home() {
           navMargin={2}
         />
       </SlideImage>
+      
       <Categorias>
-        {
-          generos.genres.map((item) => {
-           
+        {generos.length != 0 ? (
+          generos.genres.map((item)=>{
             return <div key={item.id}>
-              <Link className="link" to="/filmes">
-                {item.name}
-              </Link>
-            </div>
-          })
+            <Link className="link" to="/filmes">
+              {item.name}
+            </Link>
+          </div>
+          })) : (
+            <p></p>
+          )
         }
       </Categorias>
       <div>
-      <Titulo>Destaques</Titulo>
+      <Titulo>Recomendados para você</Titulo>
             <FilmesRandom>
-                {
-                    filmes.map((item)=>
-                    {
-                        return  <div key={item.id}>
-                        <img src={item.url}  alt={item.nome} title={item.nome}/>
-                    </div>
-                    }
-                   )
-                }
+            {recomendados.length != 0 ? (
+              recomendados.results.map((item)=>{
+                return <div key={item.id}>
+                  <img src={item.poster_path} title={item.title}/>
+              </div>
+              })) : (
+                <p></p>
+              )
+            }
+            </FilmesRandom>
+      </div>
+      <div>
+      <Titulo>Em Alta</Titulo>
+            <FilmesRandom>
+              
             </FilmesRandom>
       </div>
       <Footer />

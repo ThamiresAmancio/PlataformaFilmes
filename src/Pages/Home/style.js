@@ -26,13 +26,12 @@ export const Categorias = styled.div`
     margin-left: 50px;
     margin-top: 65px ;
 
-    
+}
 
     >div{
      min-width: 215px;
      width: auto;
-     min-height:120px;
-     height: auto;
+     height:120px;
      background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
      display: flex;
      align-items: center;
@@ -49,8 +48,8 @@ export const Categorias = styled.div`
      transform:scale(1.1);
      border: 2px solid white;
      cursor: pointer;
-     color: teal;
     }
+
 
     >.link{
     font-size: 1.8em;
