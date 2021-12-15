@@ -25,12 +25,29 @@ export const MenuTitle = styled.nav`
     }
 
     >input{
-        width: 60%;
+        width: 50%;
         height: 45%;
         border: none;
         font-family: sans-serif;
         font-size: 1.1em;
-        margin-left: 120px;
+        margin-left:50px ;
     }
+
+        >select{
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            gap: 20%;
+            align-items: flex-start;
+            margin-left: 35px;
+
+            >option{
+                font-family: 'Fuzzy Bubbles', cursive;
+                font-size: 1.5em;
+            }
+        }
+  }
 `
 

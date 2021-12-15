@@ -10,6 +10,7 @@ export const Footers = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
+    
 
     >p{
         font-size: 1.3em;
