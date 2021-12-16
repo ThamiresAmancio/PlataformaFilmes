@@ -20,40 +20,21 @@ function Home() {
 
   const [recomendados, setRecomendados] = useState([])
 
-  const [acao, setAcao] = useState([])
+  const [filmes,setFilmes] = useState([])
 
 
   useEffect(() => {
-    try {
-      api.get(`/discover/movie?with_genres=28&language=${languagePtBr}&api_key=${api_key}`).then(({ data }) => {
-        setAcao(data);
-      })
-    } catch (error) {
-      console.log('Error');
-    }
-  }, [])
-
-  useEffect(() => {
-
-    try {
       api.get(`/genre/movie/list?api_key=${api_key}&language=${languagePtBr}`).then(({ data }) => {
         setGeneros(data);
       })
-    } catch (error) {
-      console.log('Error');
-    }
   }, [])
 
   useEffect(() => {
-
-    try {
       api.get(`/trending/all/week?api_key=${api_key}&language=${languagePtBr}&page=1`).then(({ data }) => {
         setRecomendados(data);
       })
-    } catch (error) {
-      console.log('Error');
-    }
   }, [])
+
 
   function getEmAlta(altaLista) {
     const alta = []
@@ -63,11 +44,12 @@ function Home() {
     return alta;
   }
 
-  function getFilms() {
-    const output = []
+  function getTeste(altaLista) {
+    const teste = []
     for (let i = 0; i < 5; i++) {
-      output.push(recomendados.results[i]);
+      teste.push(altaLista.results[i]);
     }
+    return teste;
   }
 
   const images = [
@@ -75,6 +57,11 @@ function Home() {
     { url: img2 },
     { url: img3 }
   ];
+
+  async function teste (id) {
+    const testizinho = await api.get(`/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`)
+    return testizinho
+  }
 
   return (
     <>
@@ -104,17 +91,19 @@ function Home() {
             <p></p>
           )
           }
+
         </FilmesRandom>
       </div>
       <div>
-        {
-           generos.length != 0 ? (
+        {  
+           generos.length !== 0 ? (
             generos.genres.map((item)=>(
-              <Titulo>
+              <Titulo key={item.id}>
                 {item.name}
                 <FilmesRandom>
-                  {acao.length !== 0 ? (
-                    getEmAlta(acao).map((item)=>(
+                  {/* {console.log(teste(item.id))} */}
+                  {/* {acao.length !== 0 ? (
+                   getEmAlta(acao).map((item)=>(
                       <div key={item.id}>
                         <img src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`} alt={item.title} title={item.title} />
                       </div>
@@ -122,17 +111,17 @@ function Home() {
                   ):(
                     <p></p>
                   )
-                  }
+                  } */}
                 </FilmesRandom>
                 </Titulo>
-            )
+               )
             )) : (
               <p></p>
             )
         }
-      </div>
+      </div> 
       
-      <Footer />
+     <Footer />
     </>
   )
 }

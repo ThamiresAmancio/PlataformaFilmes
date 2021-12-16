@@ -7,6 +7,7 @@ export const SlideImage = styled.div`
   justify-content: center;
   position: relative;
   margin-top: 15px;
+  
   :hover{
       cursor: pointer;
   }  
