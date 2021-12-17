@@ -9,7 +9,7 @@ export  function List({name, id}) {
     const api_key = '23ef43567db026524d99518cb6f8a479';
     const languagePtBr = 'pt-BR'
 
-    function getEmAlta() {
+    function getFilmes () {
         const alta = []
         for (let i = 0; i < 5; i++) {
         alta.push(movies[i]);
@@ -19,7 +19,7 @@ export  function List({name, id}) {
       }
 
       useEffect(()=>{
-          getEmAlta()
+          getFilmes()
       })
 
     const getMovies = async () => {
@@ -30,7 +30,7 @@ export  function List({name, id}) {
             getMovies(id)
      }, [id])
 
-    const menu = movies.length > 0 ? getEmAlta().map(movie => {
+    const menu = movies.length > 0 ? getFilmes().map(movie => {
       return (
        <div>
             <div key={movie.id}>

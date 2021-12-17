@@ -21,6 +21,8 @@ function Home() {
 
   const [recomendados, setRecomendados] = useState([])
 
+  const [movies, setMovies] = useState([])
+
   useEffect(() => {
     api.get(`/genre/movie/list?api_key=${api_key}&language=${languagePtBr}`).then(({ data }) => {
       let info = [];
@@ -53,6 +55,26 @@ function Home() {
     { url: img1 }
   ];
 
+  function getFilmes () {
+    const alta = []
+    for (let i = 0; i < 5; i++) {
+    alta.push(movies[i]);
+    
+    }
+    return alta;
+  }
+
+  useEffect(()=>{
+      getFilmes()
+  })
+
+  const getMovies = async (id) => {
+    const url = await api.get(`/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`)
+    setMovies(url?.data?.results)
+}
+ useEffect(() => {
+        getMovies()
+ }, [])
 
   return (
     <>
@@ -85,14 +107,30 @@ function Home() {
         </FilmesRandom>
       </div>
       <div>
-        {console.log(Object.values(generos))}
-        {Object.keys(generos).map((item, i) => {
-          return (
-            <div key={i}>
-              <List name={generos?.[item]?.name} id={generos?.[item]?.id} />
-            </div>
+        {
+          generos.length !== 0 ? (
+            generos.map((item)=> (
+              <Titulo>
+                {item.name}
+              <FilmesRandom>
+                {
+                   movies.length > 0 ? getFilmes().map(movie => {
+                    return (
+                     <div>
+                          <div key={movie.id}>
+                               <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}  alt={movie.title} title={movie.title}/>
+                          </div>
+                      </div>
+                    );
+                  }) : <p></p>
+                }
+              </FilmesRandom>
+              </Titulo>
+            ))
+          ):(
+            <p></p>
           )
-        })}
+        }
       </div>
       <Footer />
     </>
