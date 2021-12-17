@@ -20,12 +20,13 @@ function Home() {
 
   const [recomendados, setRecomendados] = useState([])
 
-  const [filmes,setFilmes] = useState([])
+  const [filmess,setFilmes] = useState([])
 
 
   useEffect(() => {
       api.get(`/genre/movie/list?api_key=${api_key}&language=${languagePtBr}`).then(({ data }) => {
         setGeneros(data);
+
       })
   }, [])
 
@@ -35,7 +36,6 @@ function Home() {
       })
   }, [])
 
-
   function getEmAlta(altaLista) {
     const alta = []
     for (let i = 0; i < 5; i++) {
@@ -44,24 +44,24 @@ function Home() {
     return alta;
   }
 
-  function getTeste(altaLista) {
-    const teste = []
-    for (let i = 0; i < 5; i++) {
-      teste.push(altaLista.results[i]);
-    }
-    return teste;
-  }
-
   const images = [
     { url: img1 },
     { url: img2 },
     { url: img3 }
   ];
 
-  async function teste (id) {
-    const testizinho = await api.get(`/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`)
-    return testizinho
-  }
+  async function getMoviesById (id) {
+
+    const movies = await api.get(`/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`)
+
+    const movieData =   {  id: { results: movies }}
+    
+    return movieData
+    }
+
+  useEffect(()=>{
+  getMoviesById()
+  },[])
 
   return (
     <>
@@ -91,7 +91,6 @@ function Home() {
             <p></p>
           )
           }
-
         </FilmesRandom>
       </div>
       <div>
@@ -100,18 +99,9 @@ function Home() {
             generos.genres.map((item)=>(
               <Titulo key={item.id}>
                 {item.name}
+              
                 <FilmesRandom>
-                  {/* {console.log(teste(item.id))} */}
-                  {/* {acao.length !== 0 ? (
-                   getEmAlta(acao).map((item)=>(
-                      <div key={item.id}>
-                        <img src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`} alt={item.title} title={item.title} />
-                      </div>
-                    ))
-                  ):(
-                    <p></p>
-                  )
-                  } */}
+      
                 </FilmesRandom>
                 </Titulo>
                )
