@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Menu from '../Menu';
-import { Categorias, FilmesRandom, SlideImage, Titulo } from './style';
+import { FilmesRandom, SlideImage, Titulo } from './style';
 import img1 from '../../Assets/jogoperigoso.PNG';
 import img2 from '../../Assets/unnamed.jpg';
 import img3 from '../../Assets/euantesdevocê.jpg';
@@ -9,6 +9,7 @@ import '../../App.css';
 import Footer from '../../Components/Footer';
 import { api } from '../service/api';
 import './MovieRow.css';
+import List from './List';
 
 function Home() {
 
@@ -20,20 +21,24 @@ function Home() {
 
   const [recomendados, setRecomendados] = useState([])
 
-  const [filmess,setFilmes] = useState([])
-
-
   useEffect(() => {
-      api.get(`/genre/movie/list?api_key=${api_key}&language=${languagePtBr}`).then(({ data }) => {
-        setGeneros(data);
-
-      })
+    api.get(`/genre/movie/list?api_key=${api_key}&language=${languagePtBr}`).then(({ data }) => {
+      let info = [];
+      for (let i = 0; i < data?.genres?.length; i++) {
+        const key = data.genres[i].name;
+        info[key] = {
+          id: data.genres[i].id,
+          name: data.genres[i].name,
+        };
+      }
+      setGeneros(data?.genres);
+    })
   }, [])
 
   useEffect(() => {
-      api.get(`/trending/all/week?api_key=${api_key}&language=${languagePtBr}&page=1`).then(({ data }) => {
-        setRecomendados(data);
-      })
+    api.get(`/trending/all/week?api_key=${api_key}&language=${languagePtBr}&page=1`).then(({ data }) => {
+      setRecomendados(data);
+    })
   }, [])
 
   function getEmAlta(altaLista) {
@@ -45,23 +50,9 @@ function Home() {
   }
 
   const images = [
-    { url: img1 },
-    { url: img2 },
-    { url: img3 }
+    { url: img1 }
   ];
 
-  async function getMoviesById (id) {
-
-    const movies = await api.get(`/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`)
-
-    const movieData =   {  id: { results: movies }}
-    
-    return movieData
-    }
-
-  useEffect(()=>{
-  getMoviesById()
-  },[])
 
   return (
     <>
@@ -94,27 +85,18 @@ function Home() {
         </FilmesRandom>
       </div>
       <div>
-        {  
-           generos.length !== 0 ? (
-            generos.genres.map((item)=>(
-              <Titulo key={item.id}>
-                {item.name}
-              
-                <FilmesRandom>
-      
-                </FilmesRandom>
-                </Titulo>
-               )
-            )) : (
-              <p></p>
-            )
-        }
-      </div> 
-      
-     <Footer />
+        {console.log(Object.values(generos))}
+        {Object.keys(generos).map((item, i) => {
+          return (
+            <div key={i}>
+              <List name={generos?.[item]?.name} id={generos?.[item]?.id} />
+            </div>
+          )
+        })}
+      </div>
+      <Footer />
     </>
   )
 }
 
 export default Home;
-
