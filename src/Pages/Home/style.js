@@ -72,6 +72,7 @@ export const Titulo = styled.h2`
     margin-top: 130px;
     margin-left: 50px;
     position: relative;    
+    cursor: :pointer;
 
     >div{
     
@@ -83,8 +84,7 @@ export const Titulo = styled.h2`
         width: auto;
         height: auto;
         position: absolute;
-        margin-left: 365px;
-        
+        left: 365px;
         top:-35%;
         display: inline-block;
 

@@ -75,7 +75,6 @@ function Home() {
         />
       </SlideImage>
       <div>
-        {console.log(Object.values(results))}
         {Object.keys(results).map((item, i) => {
           return (
             <div key={i}>

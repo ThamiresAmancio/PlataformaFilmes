@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import Filmes from '../Filmes';
+
 import { api } from '../service/api'
 import './style';
 
@@ -7,6 +9,7 @@ import { FilmesRandom, Titulo } from './style';
 
 export  function List({name, id}) {
 
+  
     const [movies, setMovies] = useState([])
 
     const api_key = '23ef43567db026524d99518cb6f8a479';
@@ -39,12 +42,35 @@ export  function List({name, id}) {
         </div>
       );
     }) : <> </>;
+
+    const filmes2 = movies.length > 0 ? movies.map(movie => {
+      return (
+       <div>
+            <div key={movie.id}>
+                 <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}  alt={movie.title} title={movie.title}/>
+            </div>
+        </div>
+      );
+    }) : <> </>;
+
+    // function teste () {
+    //   if(id){
+    //     return <Filmes name={name} filme={filmes2}  id={id} />
+    //   }
+    // }
+
+    //   if(id){
+    //     return <Filmes name={name} filme={filmes2}  id={id} />
+    //   }
+    
     return (
+      
         <>
-        <Titulo>
+        <Titulo >
             <h2>{name}</h2>
             <div>
-            <Link className='linkDiv' to='/filmes '>
+            <Link  className='linkDiv' to='/filmes'>
+              {/* {id === id ?  <Filmes name={name} filme={filmes2}  id={id} /> : ''} */}
               <p> Ver Tudo</p>
             </Link>
           </div>
