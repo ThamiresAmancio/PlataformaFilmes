@@ -71,8 +71,37 @@ export const Titulo = styled.h2`
     font-size: 1.9em;
     margin-top: 130px;
     margin-left: 50px;
+    position: relative;    
+
+    >div{
+    
+        display: none;
+    }
+    
+    :hover{
+        >div{
+        width: auto;
+        height: auto;
+        position: absolute;
+        margin-left: 365px;
+        
+        top:-35%;
+        display: inline-block;
+
+        
+      >.linkDiv{
+          font-size: .8em;
+          font-family: sans-serif;
+          color: #090b13;
+          margin-left: auto;
+          margin-right: auto;
+          text-decoration: none;
+      }
+    }
+ }
 
 `
+
 
 export const FilmesRandom = styled.div`
 

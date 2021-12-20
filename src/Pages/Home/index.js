@@ -6,8 +6,7 @@ import SimpleImageSlider from "react-simple-image-slider";
 import '../../App.css';
 import Footer from '../../Components/Footer';
 import { api } from '../service/api';
-import './MovieRow.css';
-import List from './Movie';
+import List from './movie';
 
 function Home() {
 
@@ -19,7 +18,13 @@ function Home() {
 
   const [recomendados, setRecomendados] = useState([])
 
-  const [movies, setMovies] = useState([])
+  const [busca, setBusca] = useState('');
+
+  const results = generos.filter(genre => genre.name.toLowerCase().indexOf(busca) !== -1);
+
+  function handleSearchChange(e) {
+    setBusca(e.target.value.toLowerCase())
+  }
 
   useEffect(() => {
     api.get(`/genre/movie/list?api_key=${api_key}&language=${languagePtBr}`).then(({ data }) => {
@@ -53,11 +58,10 @@ function Home() {
     { url: img1 }
   ];
 
- 
 
   return (
     <>
-      <Menu />
+      <Menu change={handleSearchChange} />
       <SlideImage>
         <SimpleImageSlider
           width={'95%'}
@@ -70,27 +74,12 @@ function Home() {
           navMargin={2}
         />
       </SlideImage>
-
       <div>
-        <Titulo>Recomendados para você</Titulo>
-        <FilmesRandom>
-          {recomendados.length !== 0 ? (
-            getEmAlta(recomendados).map((item) => {
-              return <div key={item.id}>
-                <img src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`} alt={item.title} title={item.title} />
-              </div>
-            })) : (
-            <p></p>
-          )
-          }
-        </FilmesRandom>
-      </div>
-      <div>
-        {console.log(Object.values(generos))}
-        {Object.keys(generos).map((item, i) => {
+        {console.log(Object.values(results))}
+        {Object.keys(results).map((item, i) => {
           return (
             <div key={i}>
-              <List name={generos?.[item]?.name} id={generos?.[item]?.id} />
+              <List name={results?.[item]?.name} id={results?.[item]?.id} />
             </div>
           )
         })}

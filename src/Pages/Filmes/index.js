@@ -11,73 +11,7 @@ import Footer from "../../Components/Footer";
 
 function Filmes() {
 
-    const filmes = [
-        {
-            nome:'Simplesmente acontece',
-            url: img1
-        },
-        {
-            nome:'Como Eu Era Antes de Você',
-            url: img2
-        },
-        {
-            nome:'A culpa é das estrelas',
-            url: img3
-        },
-        {
-            nome:'A lenda dos dez anéis',
-            url: img4
-        },
-        {
-            nome:'Os croods 2',
-            url: img5
-        },
-        {
-            nome:'A culpa é das estrelas',
-            url: img3
-        },
-        {
-            nome:'A lenda dos dez anéis',
-            url: img4
-        },
-        {
-            nome:'Como Eu Era Antes de Você',
-            url: img5
-        },
-        {
-            nome:'Simplesmente acontece',
-            url: img1
-        },
-        {
-            nome:'Como Eu Era Antes de Você',
-            url: img2
-        },
-        {
-            nome:'A culpa é das estrelas',
-            url: img3
-        },
-        {
-            nome:'A lenda dos dez anéis',
-            url: img4
-        },
-        {
-            nome:'Os croods 2',
-            url: img5
-        },
-        {
-            nome:'A culpa é das estrelas',
-            url: img3
-        },
-        {
-            nome:'A lenda dos dez anéis',
-            url: img4
-        },
-        {
-            nome:'Como Eu Era Antes de Você',
-            url: img5
-        }
 
-    ]
     return (
         <>
             <div>
@@ -85,17 +19,9 @@ function Filmes() {
             </div>
             <Titulo>Filmes</Titulo>
             <Categorias>
-                {
-                    filmes.map((item)=>
-                    {
-                        return  <div>
-                        <img src={item.url}  alt={item.nome} title={item.nome}/>
-                    </div>
-                    }
-                   )
-                }
+               
             </Categorias>
-            <Footer/>
+           
         </>
     )
 }

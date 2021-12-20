@@ -24,6 +24,23 @@ export const MenuTitle = styled.nav`
         margin-left: 25px;
     }
 
+   > #boxHorario {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-left: 30px;
+    > span:first-child {
+      width: 35%;
+      height: auto;
+    }
+    > span:last-of-type {
+      width: 35%;
+      height: auto;
+    }
+  }
+
     >input{
         width: 50%;
         height: 45%;

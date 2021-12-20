@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { api } from '../../service/api'
+import { api } from '../service/api'
+import './style';
 
-import { FilmesRandom, Titulo } from '../style';
+import { FilmesRandom, Titulo } from './style';
 
 export  function List({name, id}) {
 
@@ -42,6 +43,11 @@ export  function List({name, id}) {
         <>
         <Titulo>
             <h2>{name}</h2>
+            <div>
+            <Link className='linkDiv' to='/filmes '>
+              <p> Ver Tudo</p>
+            </Link>
+          </div>
         </Titulo>
         <FilmesRandom>
             {filmes}
