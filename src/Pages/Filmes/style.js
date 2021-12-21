@@ -8,7 +8,7 @@ export const Categorias = styled.div`
     min-height: 250px;
     height: auto;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-auto-rows:auto;
     grid-gap: 40px ;
     align-items: center;

@@ -72,11 +72,6 @@ export const Titulo = styled.h2`
     margin-top: 130px;
     margin-left: 50px;
     position: relative;    
-   
-
-    :hover{
-        cursor:pointer;
-    }
 
     >div{
     
@@ -94,7 +89,7 @@ export const Titulo = styled.h2`
 
         
       >.linkDiv{
-          font-size: .8em;
+          font-size: .5em;
           font-family: sans-serif;
           color: #090b13;
           margin-left: auto;

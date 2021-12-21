@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Menu from '../Menu';
-import { FilmesRandom, SlideImage, Titulo } from './style';
+import { SlideImage } from './style';
 import img1 from '../../Assets/jogoperigoso.PNG';
 import SimpleImageSlider from "react-simple-image-slider";
 import '../../App.css';
 import Footer from '../../Components/Footer';
 import { api } from '../service/api';
 import List from './movie';
-import Filmes from '../Filmes';
-import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -17,8 +15,6 @@ function Home() {
   const languagePtBr = 'pt-BR'
 
   const [generos, setGeneros] = useState([]);
-
-  const [recomendados, setRecomendados] = useState([])
 
   const [busca, setBusca] = useState('');
 
@@ -42,19 +38,6 @@ function Home() {
     })
   }, [])
 
-  useEffect(() => {
-    api.get(`/trending/all/week?api_key=${api_key}&language=${languagePtBr}&page=1`).then(({ data }) => {
-      setRecomendados(data);
-    })
-  }, [])
-
-  function getEmAlta(altaLista) {
-    const alta = []
-    for (let i = 0; i < 5; i++) {
-      alta.push(altaLista.results[i]);
-    }
-    return alta;
-  }
 
   const images = [
     { url: img1 }
@@ -75,8 +58,6 @@ function Home() {
           navMargin={2}
         />
       </SlideImage>
-
-      
       <div>
         {Object.keys(results).map((item, i) => {
           return (

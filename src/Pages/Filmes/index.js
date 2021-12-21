@@ -4,7 +4,7 @@ import Footer from "../../Components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../service/api";
 
-function Filmes({name,id}) {
+function Filmes() {
 
   const [filmes,setFilmes] = useState([]);
 
@@ -13,20 +13,12 @@ function Filmes({name,id}) {
   const languagePtBr = 'pt-BR'
 
   useEffect(()=>{
-    api.get(`/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`).then(({data}) => {
-        setFilmes(data)
+
+    api.get(`discover/movie?with_genres=28&language=${languagePtBr}&api_key=${api_key}`).then(({data}) =>{
+      setFilmes(data)
     })
   },[])
 
-  const getFilmes = filmes.length > 0 ? filmes.map(movie => {
-    return (
-     <div>
-          <div key={movie.id}>
-               <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}  alt={movie.title} title={movie.title}/>
-          </div>
-      </div>
-    );
-  }) : <> </>;
 
     return (
         <>
@@ -34,11 +26,22 @@ function Filmes({name,id}) {
                 <Menu/>
             </div>
             <Titulo>
-                {name}
+               
             </Titulo>
             <Categorias >
-               {getFilmes}
+               {
+                 filmes.length !== 0 ? (
+                   filmes.results.map((item)=> {
+                     return <div  key={item.id}>
+                       <img src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}  alt={item.title} title={item.title}/>
+                     </div>
+                   })
+                 ): (
+                   <></>
+                 )
+               }
             </Categorias> 
+            <Footer/>
         </>
     )
 }
