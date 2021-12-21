@@ -43,35 +43,26 @@ export  function List({name, id}) {
       );
     }) : <> </>;
 
-    const filmes2 = movies.length > 0 ? movies.map(movie => {
-      return (
-       <div>
-            <div key={movie.id}>
-                 <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}  alt={movie.title} title={movie.title}/>
-            </div>
-        </div>
-      );
-    }) : <> </>;
+    const  teste  = () => {
+      return  <Filmes name={name} id={id} />
+    }
+   
+      // if(id){
+      //   return  <Filmes name={name}/>
+      //  }
 
-    // function teste () {
-    //   if(id){
-    //     return <Filmes name={name} filme={filmes2}  id={id} />
-    //   }
-    // }
-
-    //   if(id){
-    //     return <Filmes name={name} filme={filmes2}  id={id} />
-    //   }
-    
     return (
       
         <>
         <Titulo >
             <h2>{name}</h2>
             <div>
-            <Link  className='linkDiv' to='/filmes'>
-              {/* {id === id ?  <Filmes name={name} filme={filmes2}  id={id} /> : ''} */}
-              <p> Ver Tudo</p>
+            <Link className='linkDiv' to='/filmes'> 
+             <p onClick={ (() => id === id ?  <Filmes name={name}/> : '')}> Ver Tudo</p>
+
+             {
+               id === id ?  <Filmes name={name} id={id}/> : ''
+             }
             </Link>
           </div>
         </Titulo>

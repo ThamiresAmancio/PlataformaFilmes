@@ -72,7 +72,11 @@ export const Titulo = styled.h2`
     margin-top: 130px;
     margin-left: 50px;
     position: relative;    
-    cursor: :pointer;
+   
+
+    :hover{
+        cursor:pointer;
+    }
 
     >div{
     

@@ -3,42 +3,42 @@ import { Categorias, Titulo,  } from "./style";
 import Footer from "../../Components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../service/api";
-import Teste from "./teste";
 
-function Filmes() {
+function Filmes({name,id}) {
 
-    const [generos, setGeneros] = useState([]);
+  const [filmes,setFilmes] = useState([]);
 
-    const api_key = '23ef43567db026524d99518cb6f8a479';
+  const api_key = '23ef43567db026524d99518cb6f8a479';
 
-    const languagePtBr = 'pt-BR';
+  const languagePtBr = 'pt-BR'
 
-    useEffect(() => {
-        api.get(`/genre/movie/list?api_key=${api_key}&language=${languagePtBr}`).then(({ data }) => {
-          let info = [];
-          for (let i = 0; i < data?.genres?.length; i++) {
-            const key = data.genres[i].name;
-            info[key] = {
-              id: data.genres[i].id,
-              name: data.genres[i].name,
-            };
-          }
-          setGeneros(data?.genres);
-        })
-      }, [])
-    
-   
+  useEffect(()=>{
+    api.get(`/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`).then(({data}) => {
+        setFilmes(data)
+    })
+  },[])
+
+  const getFilmes = filmes.length > 0 ? filmes.map(movie => {
+    return (
+     <div>
+          <div key={movie.id}>
+               <img src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}  alt={movie.title} title={movie.title}/>
+          </div>
+      </div>
+    );
+  }) : <> </>;
+
     return (
         <>
-            <div>
-            {Object.keys(generos).map((item, i) => {
-            return (
-                <div key={i}>
-                <Teste name={generos?.[item]?.name} id={generos?.[item]?.id} />
-                </div>
-            )
-            })}
-        </div>
+           <div>
+                <Menu/>
+            </div>
+            <Titulo>
+                {name}
+            </Titulo>
+            <Categorias >
+               {getFilmes}
+            </Categorias> 
         </>
     )
 }

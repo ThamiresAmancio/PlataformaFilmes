@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Categorias, Titulo } from "../Home/style";
+import {Categorias, Titulo } from "../Filmes/style";
 import Menu from "../Menu";
 import { api } from "../service/api";
 
@@ -19,7 +19,16 @@ function Teste ({name, id}) {
             getMovies(id)
      }, [id])
 
-    const filmes2 = movies.length > 0 ? movies.map(movie => {
+     function getFilmes () {
+        const alta = []
+        for (let i = 0; i < 5; i++) {
+        alta.push(movies[i]);
+        
+        }
+        return alta;
+      }
+
+    const filmes2 = movies.length > 0 ? getFilmes().map(movie => {
       return (
        <div>
             <div key={movie.id}>
@@ -37,7 +46,7 @@ function Teste ({name, id}) {
             <Titulo>
                 {name}
             </Titulo>
-            <Categorias>
+            <Categorias >
                {filmes2}
             </Categorias> 
         </>

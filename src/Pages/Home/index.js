@@ -7,6 +7,8 @@ import '../../App.css';
 import Footer from '../../Components/Footer';
 import { api } from '../service/api';
 import List from './movie';
+import Filmes from '../Filmes';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -58,7 +60,6 @@ function Home() {
     { url: img1 }
   ];
 
-
   return (
     <>
       <Menu change={handleSearchChange} />
@@ -74,6 +75,8 @@ function Home() {
           navMargin={2}
         />
       </SlideImage>
+
+      
       <div>
         {Object.keys(results).map((item, i) => {
           return (
