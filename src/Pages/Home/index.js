@@ -64,7 +64,11 @@ function Home() {
         {Object.keys(results).map((item) => {
           return (
             <div key={item.id}>
-              <List name={results?.[item]?.name} id={results?.[item]?.id} />
+              <List
+                key={item.id}
+                name={results?.[item]?.name}
+                id={results?.[item]?.id}
+              />
             </div>
           );
         })}

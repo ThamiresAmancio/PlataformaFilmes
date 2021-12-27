@@ -4,6 +4,7 @@ import Footer from "../../Components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../service/api";
 import { Link, useLocation } from "react-router-dom";
+import Description from "./description";
 
 function Filmes() {
   const [genres, setGenres] = useState([]);
@@ -16,6 +17,7 @@ function Filmes() {
   const genre = query.get("genre");
   const name = query.get("name");
 
+  console.log(genres);
   useEffect(() => {
     try {
       api
@@ -41,7 +43,7 @@ function Filmes() {
           genres.results.map((item) => {
             return (
               <div key={item.id}>
-                <Link to="/filme/descricao">
+                <Link to={`/filme/descricao?name=${item.id}`}>
                   <img
                     src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
                     alt={item.title}
