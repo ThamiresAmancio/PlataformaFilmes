@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const ImgSlide = styled.img`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-`;
-
 export const Categorias = styled.div`
     width: 95%;
     min-height: 250px;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { api } from "../service/api";
 import "./style";
@@ -45,13 +45,15 @@ export function List({ name, id }) {
           getFilmes().map((movie) => {
             return (
               <>
-                <div>
+                <div key={movie.id}>
                   <div key={movie.id}>
-                    <img
-                      src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
-                      alt={movie.title}
-                      title={movie.title}
-                    />
+                    <Link to={`/filme/descricao?name=${movie.id}`}>
+                      <img
+                        src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                        alt={movie.title}
+                        title={movie.title}
+                      />
+                    </Link>
                   </div>
                 </div>
               </>

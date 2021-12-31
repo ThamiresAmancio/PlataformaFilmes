@@ -4,9 +4,6 @@ import "../../App.css";
 import Footer from "../../Components/Footer";
 import { api } from "../service/api";
 import List from "./movie";
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
-import { Categorias, FilmesRandom, ImgSlide, Titulo } from "./style";
 
 function Home() {
   const api_key = "23ef43567db026524d99518cb6f8a479";
@@ -14,8 +11,10 @@ function Home() {
   const languagePtBr = "pt-BR";
 
   const [generos, setGeneros] = useState([]);
-  const [imgPopulares, setImgPopulares] = useState([]);
   const [busca, setBusca] = useState("");
+  const [img, setImg] = useState([]);
+  const [featuredData, setFeaturedData] = useState(null);
+  const [movieList, setMovieList] = useState([]);
 
   const results = generos.filter(
     (genre) => genre.name.toLowerCase().indexOf(busca) !== -1
@@ -24,6 +23,23 @@ function Home() {
   function handleSearchChange(e) {
     setBusca(e.target.value.toLowerCase());
   }
+
+  const [blackHeader, setBlackHeader] = useState(false);
+
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 10) {
+        setBlackHeader(true);
+      } else {
+        setBlackHeader(false);
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, []);
 
   useEffect(() => {
     api
@@ -43,32 +59,21 @@ function Home() {
 
   useEffect(() => {
     api
-      .get(`movie/popular?api_key=${api_key}&language=${languagePtBr}&page=1`)
+      .get(`/movie/popular?api_key=${api_key}&language=${languagePtBr}&page=1`)
       .then(({ data }) => {
-        setImgPopulares(data?.results);
+        setImg(data);
       });
-  }, []);
-
-  function getImages(listImg) {
-    const img = [];
-    for (let i = 0; i < 5; i++) {
-      img.push(listImg[i]);
-    }
-    return img;
-  }
+  });
 
   return (
     <>
-      <Menu change={handleSearchChange} />
+      <Menu change={handleSearchChange} black={blackHeader} />
+
       <div>
         {Object.keys(results).map((item) => {
           return (
             <div key={item.id}>
-              <List
-                key={item.id}
-                name={results?.[item]?.name}
-                id={results?.[item]?.id}
-              />
+              <List name={results?.[item]?.name} id={results?.[item]?.id} />
             </div>
           );
         })}

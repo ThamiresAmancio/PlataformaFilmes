@@ -1,8 +1,23 @@
 .link {
-  font-size: 1.8em;
+  font-size: 1.3em;
   font-family: "Fuzzy Bubbles", cursive;
   color: white;
   margin-left: auto;
   margin-right: auto;
   text-decoration: none;
+}
+
+.each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 300px;
+}
+
+.each-slide span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
 }

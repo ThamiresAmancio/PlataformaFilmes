@@ -7,17 +7,31 @@ import { Link, useLocation } from "react-router-dom";
 import Description from "./description";
 
 function Filmes() {
-  const [genres, setGenres] = useState([]);
+  const [filmes, setFilmes] = useState([]);
 
   const api_key = "23ef43567db026524d99518cb6f8a479";
-
   const languagePtBr = "pt-BR";
-
   const query = new URLSearchParams(useLocation().search);
   const genre = query.get("genre");
   const name = query.get("name");
 
-  console.log(genres);
+  const [blackHeader, setBlackHeader] = useState(false);
+
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 10) {
+        setBlackHeader(true);
+      } else {
+        setBlackHeader(false);
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, []);
+
   useEffect(() => {
     try {
       api
@@ -25,7 +39,7 @@ function Filmes() {
           `/discover/movie?with_genres=${genre}&language=${languagePtBr}&api_key=${api_key}`
         )
         .then(({ data }) => {
-          setGenres(data);
+          setFilmes(data);
         });
     } catch (error) {
       console.log(error);
@@ -35,12 +49,12 @@ function Filmes() {
   return (
     <>
       <div>
-        <Menu />
+        <Menu black={blackHeader} />
       </div>
       <Titulo>{name}</Titulo>
       <Categorias>
-        {genres.length !== 0 ? (
-          genres.results.map((item) => {
+        {filmes.length !== 0 ? (
+          filmes.results.map((item) => {
             return (
               <div key={item.id}>
                 <Link to={`/filme/descricao?name=${item.id}`}>

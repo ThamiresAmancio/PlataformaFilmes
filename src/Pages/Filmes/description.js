@@ -36,7 +36,6 @@ function Description() {
 
   return (
     <>
-      <Menu />
       {getFilmesById().map((item) => {
         return (
           <>
@@ -46,7 +45,7 @@ function Description() {
               style={{
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop_path})`,
               }}
             >
               <div className="featured--vertical">
@@ -60,7 +59,7 @@ function Description() {
                   <div className="featured--description">{item.overview}</div>
                   <div className="featured--buttons">
                     <Link
-                      to={`/videos/${item.id}`}
+                      to={`/videos?id=${item.id}`}
                       className="featured--watchButton"
                     >
                       ▶ Assistir Trailer
