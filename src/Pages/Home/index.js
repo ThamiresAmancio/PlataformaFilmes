@@ -4,6 +4,10 @@ import "../../App.css";
 import Footer from "../../Components/Footer";
 import { api } from "../service/api";
 import List from "./movie";
+import { FilmesRandom } from "./style";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+import img1 from "../../Assets/051042.jpg";
 
 function Home() {
   const api_key = "23ef43567db026524d99518cb6f8a479";
@@ -13,8 +17,14 @@ function Home() {
   const [generos, setGeneros] = useState([]);
   const [busca, setBusca] = useState("");
   const [img, setImg] = useState([]);
-  const [featuredData, setFeaturedData] = useState(null);
-  const [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    api
+      .get(`/movie/popular?api_key=${api_key}&language=${languagePtBr}&page=1`)
+      .then(({ data }) => {
+        setImg(data);
+      });
+  }, []);
 
   const results = generos.filter(
     (genre) => genre.name.toLowerCase().indexOf(busca) !== -1
@@ -57,27 +67,54 @@ function Home() {
       });
   }, []);
 
-  useEffect(() => {
-    api
-      .get(`/movie/popular?api_key=${api_key}&language=${languagePtBr}&page=1`)
-      .then(({ data }) => {
-        setImg(data);
-      });
-  });
+  const slideImages = [
+    {
+      url: img1,
+      caption: "Slide 1",
+    },
+    {
+      url: "images/slide_3.jpg",
+      caption: "Slide 2",
+    },
+    {
+      url: "images/slide_4.jpg",
+      caption: "Slide 3",
+    },
+  ];
 
   return (
     <>
       <Menu change={handleSearchChange} black={blackHeader} />
-
+      <div className="slide-container">
+        <Slide>
+          {img.results.map((item, index) => (
+            <>
+              <section
+                key={item.id}
+                className="featured"
+                style={{
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop_path})`,
+                }}
+              >
+                <div className="featured--vertical">
+                  <div className="featured--horizontal">
+                    <div className="featured--name">{item.title}</div>
+                  </div>
+                </div>
+              </section>
+            </>
+          ))}
+        </Slide>
+      </div>
       <div>
         {Object.keys(results).map((item) => {
-          return (
-            <div key={item.id}>
-              <List name={results?.[item]?.name} id={results?.[item]?.id} />
-            </div>
-          );
+          return <List name={results?.[item]?.name} id={results?.[item]?.id} />;
         })}
       </div>
+
+      <FilmesRandom></FilmesRandom>
       <Footer />
     </>
   );

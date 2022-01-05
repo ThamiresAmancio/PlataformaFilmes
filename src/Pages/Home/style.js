@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Categorias = styled.div`
     width: 95%;
+    background-color: black;
     min-height: 250px;
     height: auto;
     display: grid;
@@ -85,7 +86,6 @@ export const FilmesRandom = styled.div`
   grid-gap: 40px;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
 
   > div {
     width: 200px;
@@ -98,6 +98,7 @@ export const FilmesRandom = styled.div`
     box-shadow: 6px 6px 6px 6px rgba(0, 0, 0, 0.2);
     border: 4px solid rgba(249, 249, 249, 0.1);
     border-radius: 3px;
+    margin-top: 50px;
 
     :hover {
       -webkit-transform: scale(1.2);

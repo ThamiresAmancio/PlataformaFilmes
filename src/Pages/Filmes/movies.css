@@ -10,7 +10,7 @@
 
 .featured--horizontal {
   width: inherit;
-  height: 600px;
+  height: 500px;
   background: linear-gradient(to right, #111 20%, transparent 70%);
   display: flex;
   flex-direction: column;
@@ -117,4 +117,38 @@
   .featured--genres {
     font-size: 14px;
   }
+}
+
+.newPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  position: relative;
+}
+
+.text-page {
+  font-size: 1.3em;
+  font-family: "Fuzzy Bubbles", cursive;
+  color: white;
+  margin-left: 15px;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+}
+
+.pagination li + li {
+  margin-left: 1rem;
+}
+
+.pagination__item--active {
+  background: none;
+  font-weight: bold;
+  border: none;
+}
+
+.pagination__item--active:focus {
+  outline: none;
 }

@@ -46,15 +46,13 @@ export function List({ name, id }) {
             return (
               <>
                 <div key={movie.id}>
-                  <div key={movie.id}>
-                    <Link to={`/filme/descricao?name=${movie.id}`}>
-                      <img
-                        src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
-                        alt={movie.title}
-                        title={movie.title}
-                      />
-                    </Link>
-                  </div>
+                  <Link to={`/filme/descricao?name=${movie.id}`}>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                      alt={movie.title}
+                      title={movie.title}
+                    />
+                  </Link>
                 </div>
               </>
             );

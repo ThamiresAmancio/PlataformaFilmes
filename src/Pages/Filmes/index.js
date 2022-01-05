@@ -1,10 +1,11 @@
-import Menu from "../Menu";
 import { Categorias, Titulo } from "./style";
 import Footer from "../../Components/Footer";
 import { useEffect, useState } from "react";
 import { api } from "../service/api";
 import { Link, useLocation } from "react-router-dom";
-import Description from "./description";
+import MenuFilmes from "../Menu/menu";
+import "../Home/style.css";
+import { FilmesRandom } from "../Home/style";
 
 function Filmes() {
   const [filmes, setFilmes] = useState([]);
@@ -14,6 +15,16 @@ function Filmes() {
   const query = new URLSearchParams(useLocation().search);
   const genre = query.get("genre");
   const name = query.get("name");
+
+  const [busca, setBusca] = useState("");
+
+  const results = filmes.filter(
+    (i) => i.title.toLowerCase().indexOf(busca) !== -1
+  );
+
+  function handleSearchChange(e) {
+    setBusca(e.target.value);
+  }
 
   const [blackHeader, setBlackHeader] = useState(false);
 
@@ -39,7 +50,7 @@ function Filmes() {
           `/discover/movie?with_genres=${genre}&language=${languagePtBr}&api_key=${api_key}`
         )
         .then(({ data }) => {
-          setFilmes(data);
+          setFilmes(data.results);
         });
     } catch (error) {
       console.log(error);
@@ -49,20 +60,21 @@ function Filmes() {
   return (
     <>
       <div>
-        <Menu black={blackHeader} />
+        <MenuFilmes black={blackHeader} change={handleSearchChange} />
       </div>
       <Titulo>{name}</Titulo>
       <Categorias>
-        {filmes.length !== 0 ? (
-          filmes.results.map((item) => {
+        {results.length !== 0 ? (
+          results.map((item) => {
             return (
               <div key={item.id}>
-                <Link to={`/filme/descricao?name=${item.id}`}>
+                <Link className="link" to={`/filme/descricao?name=${item.id}`}>
                   <img
                     src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
                     alt={item.title}
                     title={item.title}
                   />
+                  <p>{item.title}</p>
                 </Link>
               </div>
             );
@@ -71,6 +83,7 @@ function Filmes() {
           <></>
         )}
       </Categorias>
+      <FilmesRandom></FilmesRandom>
       <Footer />
     </>
   );

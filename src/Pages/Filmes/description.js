@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Footer from "../../Components/Footer";
-import Menu from "../Menu";
 import { api } from "../service/api";
 import "./movies.css";
 
@@ -56,6 +54,7 @@ function Description() {
                       {item.vote_average} pontos
                     </div>
                   </div>
+                  <div className="featured--genres"></div>
                   <div className="featured--description">{item.overview}</div>
                   <div className="featured--buttons">
                     <Link

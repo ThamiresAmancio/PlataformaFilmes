@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../Home/style.css";
 import "./style.css";
 
-function Menu({ change, black }) {
+function MenuFilmes({ black, change }) {
   return (
     <>
       <header className={black ? "black" : ""}>
@@ -27,4 +27,4 @@ function Menu({ change, black }) {
   );
 }
 
-export default Menu;
+export default MenuFilmes;

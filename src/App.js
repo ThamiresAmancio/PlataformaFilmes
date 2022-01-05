@@ -1,11 +1,10 @@
-import './App.css';
-import Rotas from './Router';
-
+import "./App.css";
+import Rotas from "./Router";
 
 function App() {
   return (
     <div>
-      <Rotas/>
+      <Rotas />
     </div>
   );
 }

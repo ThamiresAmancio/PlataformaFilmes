@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { FaAngleLeft } from "react-icons/fa";
+import { FaAngleRight } from "react-icons/fa";
 
 export const Categorias = styled.div`
   min-width: 95%;
@@ -47,4 +49,21 @@ export const Titulo = styled.h2`
   font-size: 40px;
   margin-top: 125px;
   margin-left: 55px;
+`;
+
+export const IconNext = styled(FaAngleLeft)`
+  position: absolute;
+  font-size: 25px;
+  color: white;
+  bottom: 4%;
+  left: 44%;
+  cursor: pointer;
+`;
+
+export const IconBack = styled(FaAngleRight)`
+  position: absolute;
+  font-size: 25px;
+  color: white;
+  bottom: 4%;
+  cursor: pointer;
 `;

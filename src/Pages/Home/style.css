@@ -7,17 +7,17 @@
   text-decoration: none;
 }
 
-.each-slide > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  height: 300px;
+.link p {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  font-family: "Fuzzy Bubbles", cursive;
+  text-align: center;
 }
 
-.each-slide span {
-  padding: 20px;
-  font-size: 20px;
-  background: #efefef;
+div p {
+  color: white;
+  font-size: 1.1em;
+  font-family: "Fuzzy Bubbles", cursive;
   text-align: center;
 }
