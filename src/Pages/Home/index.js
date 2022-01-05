@@ -7,7 +7,6 @@ import List from "./movie";
 import { FilmesRandom } from "./style";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import img1 from "../../Assets/051042.jpg";
 
 function Home() {
   const api_key = "23ef43567db026524d99518cb6f8a479";
@@ -67,45 +66,34 @@ function Home() {
       });
   }, []);
 
-  const slideImages = [
-    {
-      url: img1,
-      caption: "Slide 1",
-    },
-    {
-      url: "images/slide_3.jpg",
-      caption: "Slide 2",
-    },
-    {
-      url: "images/slide_4.jpg",
-      caption: "Slide 3",
-    },
-  ];
-
   return (
     <>
       <Menu change={handleSearchChange} black={blackHeader} />
       <div className="slide-container">
         <Slide>
-          {img.results.map((item, index) => (
-            <>
-              <section
-                key={item.id}
-                className="featured"
-                style={{
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop_path})`,
-                }}
-              >
-                <div className="featured--vertical">
-                  <div className="featured--horizontal">
-                    <div className="featured--name">{item.title}</div>
+          {img.length !== 0 ? (
+            img.results.map((item, index) => (
+              <>
+                <section
+                  key={item.id}
+                  className="featured"
+                  style={{
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop_path})`,
+                  }}
+                >
+                  <div className="featured--vertical">
+                    <div className="featured--horizontal">
+                      <div className="featured--name">{item.title}</div>
+                    </div>
                   </div>
-                </div>
-              </section>
-            </>
-          ))}
+                </section>
+              </>
+            ))
+          ) : (
+            <div></div>
+          )}
         </Slide>
       </div>
       <div>
