@@ -1,8 +1,6 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import Menu from "../Menu";
 import { api } from "../service/api";
 import ReactPlayer from "react-player";
 

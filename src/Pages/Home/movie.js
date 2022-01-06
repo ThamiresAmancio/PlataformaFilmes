@@ -22,7 +22,6 @@ export function List({ name, id }) {
   useEffect(() => {
     getMovies(id);
   }, [id]);
-
   function getFilmes() {
     const filmes = [];
     for (let i = 0; i < 5; i++) {

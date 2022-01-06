@@ -101,7 +101,6 @@ function Home() {
           return <List name={results?.[item]?.name} id={results?.[item]?.id} />;
         })}
       </div>
-
       <FilmesRandom></FilmesRandom>
       <Footer />
     </>

@@ -5,7 +5,6 @@ import Footer from "../../Components/Footer";
 import { FilmesRandom, Titulo } from "../Home/style";
 import { api } from "../service/api";
 import MenuFilmes from "../Menu/menu";
-import Menu from "../Menu/index";
 import Paginations from "./pagination";
 
 function FilmesPopulares() {
