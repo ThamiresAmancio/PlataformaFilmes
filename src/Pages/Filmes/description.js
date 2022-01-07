@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import ReactPlayer from "react-player";
+import { useLocation } from "react-router-dom";
 import { api } from "../service/api";
 import "./movies.css";
 
@@ -10,9 +11,31 @@ function Description() {
 
   const [moviesDescription, setMoviesDescription] = useState([]);
 
+  const [videos, setVideos] = useState([]);
   const query = new URLSearchParams(useLocation().search);
-
   const name = query.get("name");
+
+  useEffect(() => {
+    try {
+      api
+        .get(
+          `/movie/${name}/videos?api_key=${api_key}&language=${languagePtBr}`
+        )
+        .then(({ data }) => {
+          setVideos(data?.results);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  function getVideos(listVideos) {
+    const videosMovies = [];
+    for (let i = 0; i < 1; i++) {
+      videosMovies.push(listVideos[i]);
+    }
+    return videosMovies;
+  }
 
   useEffect(() => {
     try {
@@ -31,6 +54,21 @@ function Description() {
     array.push(moviesDescription);
     return array;
   }
+
+  const [show, setShow] = useState(false);
+
+  const handleModalClose = (e) => {
+    const currentClass = e.target.className;
+
+    if (currentClass === "modal-card") {
+      return;
+    }
+    setShow(false);
+  };
+
+  const handleModalOpen = () => {
+    setShow(true);
+  };
 
   return (
     <>
@@ -54,19 +92,43 @@ function Description() {
                       {item.vote_average} pontos
                     </div>
                   </div>
+
                   <div className="featured--genres"></div>
                   <div className="featured--description">{item.overview}</div>
                   <div className="featured--buttons">
-                    <Link
-                      to={`/videos?id=${item.id}`}
+                    <div
                       className="featured--watchButton"
+                      onClick={handleModalOpen}
                     >
                       ▶ Assistir Trailer
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
             </section>
+            <div hidden={!show}>
+              <div className="modal-background">
+                <button className="button" onClick={handleModalClose}>
+                  {" "}
+                  X
+                </button>
+                <div className="modal-card">
+                  {videos.length > 0 ? (
+                    getVideos(videos).map((item) => {
+                      return (
+                        <ReactPlayer
+                          width={"800px"}
+                          height={"500px"}
+                          url={`https://www.youtube.com/watch?v=${item.key}`}
+                        />
+                      );
+                    })
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
+              </div>
+            </div>
           </>
         );
       })}

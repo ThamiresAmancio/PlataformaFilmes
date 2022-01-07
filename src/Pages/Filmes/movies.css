@@ -25,6 +25,7 @@
   font-weight: bold;
   font-family: sans-serif;
   color: white;
+  font-family: "Fuzzy Bubbles", cursive;
 }
 
 .featured--info {
@@ -50,6 +51,7 @@
   font-size: 20px;
   color: #999;
   max-width: 40%;
+  font-family: "Fuzzy Bubbles", cursive;
 }
 
 .featured--buttons {
@@ -88,6 +90,7 @@
   margin-top: 15px;
   font-size: 18px;
   color: #999;
+  font-family: "Fuzzy Bubbles", cursive;
 }
 
 @media (max-width: 760px) {
@@ -134,21 +137,42 @@
   margin-left: 15px;
 }
 
-.pagination {
-  display: flex;
-  list-style: none;
+.button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 6px;
+  padding: 20px;
 }
 
-.pagination li + li {
-  margin-left: 1rem;
+.modal-background {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(10, 10, 10, 0.86);
 }
 
-.pagination__item--active {
-  background: none;
-  font-weight: bold;
+.modal-card {
+  margin: 0 auto;
+  display: block;
+  margin-top: 50px;
+  width: 700px;
+  height: auto;
+  border-radius: 5px;
+  position: relative;
+}
+
+.button {
+  position: absolute;
+  left: 76%;
+  top: -5%;
+  background-color: transparent;
   border: none;
+  color: #fff;
 }
 
-.pagination__item--active:focus {
-  outline: none;
+.button:hover {
+  background-color: #090b13;
 }

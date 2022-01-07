@@ -16,14 +16,6 @@ function FilmesPopulares() {
 
   const [busca, setBusca] = useState("");
 
-  const filmes = filmesPopular.filter(
-    (i) => i.title.toLowerCase().indexOf(busca) !== -1
-  );
-
-  function handleSearchChange(e) {
-    setBusca(e.target.value);
-  }
-
   //pega aonde que a página está EX: 1
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -31,8 +23,15 @@ function FilmesPopulares() {
   const [totalPage, setTotalPage] = useState(null);
 
   // quantidade de items
-  const [perPage, setPerpage] = useState(1);
+  const perPage = 1;
 
+  const filmes = filmesPopular.filter(
+    (i) => i.title.toLowerCase().indexOf(busca) !== -1
+  );
+
+  function handleSearchChange(e) {
+    setBusca(e.target.value);
+  }
   useEffect(() => {
     if (currentPage) {
       api
@@ -61,13 +60,13 @@ function FilmesPopulares() {
     };
   }, []);
 
-  //função que aumenta uma página
-  function nextPage(page) {
+  //função para ir para proxíma página
+  function nextPage() {
     setCurrentPage((page) => page + 1);
   }
 
-  //função que diminui uma página
-  function backPage(page) {
+  //função ara ir para página anterior
+  function backPage() {
     setCurrentPage((page) => page - 1);
   }
 
