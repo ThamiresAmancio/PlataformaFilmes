@@ -113,7 +113,6 @@ function FilmesPopulares() {
           totalResults={totalPage}
         />
       </div>
-      <FilmesRandom></FilmesRandom>
       <Footer />
     </>
   );

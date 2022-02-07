@@ -99,6 +99,7 @@ export const FilmesRandom = styled.div`
     border: 4px solid rgba(249, 249, 249, 0.1);
     border-radius: 3px;
     margin-top: 50px;
+    margin-bottom: 50px;
 
     :hover {
       -webkit-transform: scale(1.2);

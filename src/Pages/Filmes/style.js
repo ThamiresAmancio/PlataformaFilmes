@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
+import { TiDelete } from "react-icons/ti";
 
 export const Categorias = styled.div`
   min-width: 95%;
@@ -14,6 +15,7 @@ export const Categorias = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 100px;
+  margin-bottom: 60px;
 
   > div {
     width: 200px;
@@ -56,7 +58,7 @@ export const IconNext = styled(FaAngleLeft)`
   font-size: 25px;
   color: white;
   bottom: 4%;
-  left: 44%;
+  margin-left: -6px;
   cursor: pointer;
 `;
 
@@ -64,6 +66,16 @@ export const IconBack = styled(FaAngleRight)`
   position: absolute;
   font-size: 25px;
   color: white;
-  bottom: 4%;
+  bottom: 5%;
+  cursor: pointer;
+`;
+
+export const IconDelete = styled(TiDelete)`
+  position: absolute;
+  font-size: 50px;
+  color: white;
+  top: 4%;
+  z-index: 999;
+  left: 83%;
   cursor: pointer;
 `;

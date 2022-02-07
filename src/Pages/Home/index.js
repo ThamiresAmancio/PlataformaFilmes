@@ -4,7 +4,7 @@ import "../../App.css";
 import Footer from "../../Components/Footer";
 import { api } from "../service/api";
 import List from "./movie";
-import { FilmesRandom } from "./style";
+
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
@@ -101,7 +101,7 @@ function Home() {
           return <List name={results?.[item]?.name} id={results?.[item]?.id} />;
         })}
       </div>
-      <FilmesRandom></FilmesRandom>
+
       <Footer />
     </>
   );

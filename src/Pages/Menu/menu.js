@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../Home/style.css";
+
 import "./style.css";
 
 function MenuFilmes({ black, change }) {

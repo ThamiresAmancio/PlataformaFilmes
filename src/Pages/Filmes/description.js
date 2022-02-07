@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { useLocation } from "react-router-dom";
 import { api } from "../service/api";
 import "./movies.css";
+import { IconDelete } from "./style";
 
 function Description() {
   const api_key = "23ef43567db026524d99518cb6f8a479";
@@ -108,17 +109,15 @@ function Description() {
             </section>
             <div hidden={!show}>
               <div className="modal-background">
-                <button className="button" onClick={handleModalClose}>
-                  {" "}
-                  X
-                </button>
+                {" "}
+                <IconDelete onClick={handleModalClose} />
                 <div className="modal-card">
                   {videos.length > 0 ? (
                     getVideos(videos).map((item) => {
                       return (
                         <ReactPlayer
-                          width={"800px"}
-                          height={"500px"}
+                          width={"1200px"}
+                          height={"650px"}
                           url={`https://www.youtube.com/watch?v=${item.key}`}
                         />
                       );

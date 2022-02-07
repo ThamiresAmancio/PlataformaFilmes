@@ -5,7 +5,7 @@ import { api } from "../service/api";
 import { Link, useLocation } from "react-router-dom";
 import MenuFilmes from "../Menu/menu";
 import "../Home/style.css";
-import { FilmesRandom } from "../Home/style";
+import "./movies.css";
 
 function Filmes() {
   const [filmes, setFilmes] = useState([]);
@@ -67,23 +67,27 @@ function Filmes() {
         {results.length !== 0 ? (
           results.map((item) => {
             return (
-              <div key={item.id}>
-                <Link className="link" to={`/filme/descricao?name=${item.id}`}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
-                    alt={item.title}
-                    title={item.title}
-                  />
-                  <p>{item.title}</p>
-                </Link>
-              </div>
+              <>
+                <div key={item.id}>
+                  <Link
+                    className="link"
+                    to={`/filme/descricao?name=${item.id}`}
+                  >
+                    <img
+                      src={`https://image.tmdb.org/t/p/w200/${item.poster_path}`}
+                      alt={item.title}
+                      title={item.title}
+                    />
+                    <p>{item.title}</p>
+                  </Link>
+                </div>
+              </>
             );
           })
         ) : (
           <></>
         )}
       </Categorias>
-      <FilmesRandom></FilmesRandom>
       <Footer />
     </>
   );

@@ -11,6 +11,8 @@ const Paginations = ({
   // variavél totalPages = que divide o totalResults com o qtdItem e soma 1
   const totalPages = Math.floor(totalResults / qtdItem + 1);
 
+  console.log(currentPage, qtdItem, totalResults);
+
   return (
     <div className="newPagination">
       {currentPage > 1 && (

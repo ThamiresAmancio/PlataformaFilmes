@@ -13,13 +13,13 @@ export function List({ name, id }) {
 
   const languagePtBr = "pt-BR";
 
-  const getMovies = async () => {
-    const url = await api.get(
-      `/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`
-    );
-    setMovies(url?.data?.results);
-  };
   useEffect(() => {
+    const getMovies = async () => {
+      const url = await api.get(
+        `/discover/movie?with_genres=${id}&language=${languagePtBr}&api_key=${api_key}`
+      );
+      setMovies(url?.data?.results);
+    };
     getMovies(id);
   }, [id]);
   function getFilmes() {

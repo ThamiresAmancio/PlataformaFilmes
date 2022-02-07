@@ -46,3 +46,36 @@ header input {
   margin-right: auto;
   text-decoration: none;
 }
+
+.subCategoria {
+  width: auto;
+  height: auto;
+  /* background-color: maroon; */
+  z-index: 3;
+  position: absolute;
+  margin-left: 30px;
+  padding-left: 30px;
+  border-left: 2px solid white;
+  padding-bottom: 10px;
+}
+/* .subCategoria2{
+  width: 350px;
+  height: auto;
+  position: absolute;
+  background-color: mediumorchid;
+  right: 4%;
+} */
+.itemsCategoria:hover .containerSubmenu {
+  display: inline-block;
+}
+/* Itens nome categorias */
+.subItem {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 9px;
+  color: #8197a4;
+}
+.subItem:hover {
+  color: white;
+  cursor: pointer;
+}
